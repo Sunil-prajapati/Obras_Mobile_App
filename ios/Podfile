@@ -1,0 +1,36 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
+
+platform :ios, '11.0'
+
+target 'Obras' do
+  config = use_native_modules!
+  use_unimodules!
+  use_react_native!(:path => config["reactNativePath"])
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  target 'ObrasTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  # use_flipper!({ 'Flipper' => '0.74.0' })
+  # post_install do |installer|
+  #   flipper_post_install(installer)
+  # end
+end
+
+target 'Obras-tvOS' do
+  # Pods for Obras-tvOS
+
+  target 'Obras-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
